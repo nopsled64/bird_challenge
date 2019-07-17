@@ -5,8 +5,12 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/index", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "web_res/index.html")
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "web_res/welcome.html")
+	})
+
+	http.HandleFunc("/start", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "web_res/start.html")
 	})
 
 	http.HandleFunc("/chaffinch.txt", func(w http.ResponseWriter, r *http.Request) {
@@ -36,4 +40,7 @@ func main() {
 	// http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	http.ListenAndServe(":8080", nil)
+
+	//appengine.Main()
+
 }
