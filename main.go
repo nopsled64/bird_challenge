@@ -13,16 +13,16 @@ func main() {
 		http.ServeFile(w, r, "web_res/start.html")
 	})
 
-	http.HandleFunc("/chaffinch.txt", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "web_res/chaffinch.txt")
+	http.HandleFunc("/chaffinch", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "web_res/chaffinch.html")
 	})
 
 	http.HandleFunc("/bird.mp3", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "web_res/bird.mp3")
 	})
 
-	http.HandleFunc("/penguin.txt", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "web_res/penguin.txt")
+	http.HandleFunc("/penguin", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "web_res/penguin.html")
 	})
 
 	http.HandleFunc("/bird.jpg", func(w http.ResponseWriter, r *http.Request) {
@@ -33,9 +33,14 @@ func main() {
 		http.ServeFile(w, r, "web_res/bird.png")
 	})
 
-	http.HandleFunc("/puffin.txt", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "web_res/puffin.txt")
+	http.HandleFunc("/puffin", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "web_res/puffin.html")
 	})
+
+	// http.HandleFunc("/magpie", func(w http.ResponseWriter, r *http.Request) {
+	// 	http.ServeFile(w, r, "web_res/puffin.html")
+	// })
+
 	// fs := http.FileServer(http.Dir("static/"))
 	// http.Handle("/static/", http.StripPrefix("/static/", fs))
 
