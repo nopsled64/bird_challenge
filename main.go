@@ -30,7 +30,7 @@ func main() {
 	})
 
 	http.HandleFunc("/human.png", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "web_res/bird.png")
+		http.ServeFile(w, r, "web_res/human.png")
 	})
 
 	http.HandleFunc("/puffin", func(w http.ResponseWriter, r *http.Request) {
