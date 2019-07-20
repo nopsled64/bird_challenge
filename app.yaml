@@ -3,4 +3,4 @@ api_version: go1
 
 handlers:
 - url: /.*
-  script: this field is required, but ignored
+  script: main.go
