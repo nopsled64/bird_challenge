@@ -1,9 +1,16 @@
 steps:
-- name: "gcr.io/cloud-builders/go"
-  args: ["get", "google.golang.org/appengine"]
-  env: ["GOPATH=/workspace/gopath"]
 
-- name: "gcr.io/cloud-builders/gcloud"
-  env: ["GOPATH=/workspace/gopath"]
-  args: ["app", "deploy", "app/app.yaml"]
+- name: 'gcr.io/cloud-builders/go'
+  args: ['get', '-d', 'google.golang.org/appengine']
+  env: ['GOPATH=/gopath']
+  volumes:
+  - name: 'go'
+    path: '/gopath'
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['app', 'deploy', "app/app.yaml"]
+  env: ['GOPATH=/gopath']
+  volumes:
+  - name: 'go'
+    path: '/gopath'
 timeout: "1600s"
