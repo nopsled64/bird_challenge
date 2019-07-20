@@ -1,5 +1,5 @@
 steps:
 - name: "gcr.io/cloud-builders/gcloud"
   env: ['GOPATH=/workspace/gopath']
-  args: ["app", "deploy"]
+  args: ["app", "deploy", "app/app.yaml"]
 timeout: "1600s"
