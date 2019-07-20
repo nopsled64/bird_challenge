@@ -1,5 +1,9 @@
 steps:
-- name: "gcr.io/cloud-builders/gcloud"
+- name: 'gcr.io/cloud-builders/go'
+  args: ['get', 'google.golang.org/appengine']
+  env: ['GOPATH=/workspace/gopath']
+
+  - name: "gcr.io/cloud-builders/gcloud"
   env: ['GOPATH=/workspace/gopath']
   args: ["app", "deploy", "app/app.yaml"]
 timeout: "1600s"
