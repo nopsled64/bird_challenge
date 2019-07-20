@@ -2,8 +2,6 @@ package main
 
 import (
 	"net/http"
-
-	"google.golang.org/appengine"
 )
 
 func main() {
@@ -46,8 +44,8 @@ func main() {
 	// fs := http.FileServer(http.Dir("static/"))
 	// http.Handle("/static/", http.StripPrefix("/static/", fs))
 
-	//http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":8080", nil)
 
-	appengine.Main()
+	//appengine.Main()
 
 }
