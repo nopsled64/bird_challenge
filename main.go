@@ -3,6 +3,8 @@ package main
 import (
 	"net/http"
 	"time"
+
+	"google.golang.org/appengine"
 )
 
 func addCookie(w http.ResponseWriter, name string, value string) {
@@ -90,8 +92,9 @@ func main() {
 	// fs := http.FileServer(http.Dir("static/"))
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-	http.ListenAndServe(":8080", nil)
+	//http.ListenAndServe(":8080", nil)
 
-	//appengine.Main()
+	appengine.Main()
 
+	//steghide extract -sf bird.jpg
 }
