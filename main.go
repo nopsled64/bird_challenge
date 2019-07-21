@@ -33,7 +33,7 @@ func main() {
 				http.Redirect(w, r, "https://www.youtube.com/watch?v=af8toaRboCk", 307)
 			}
 		} else {
-			addCookie(w, "Bird", "GoldFinch")
+			addCookie(w, "Bird", "Goldfinch")
 			http.ServeFile(w, r, "web_res/welcome.html")
 		}
 	})
@@ -55,7 +55,7 @@ func main() {
 	})
 
 	http.HandleFunc("/bird.jpg", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "web_res/bird.jpg")
+		http.ServeFile(w, r, "static/bird.jpg")
 	})
 
 	http.HandleFunc("/human.png", func(w http.ResponseWriter, r *http.Request) {
@@ -72,7 +72,7 @@ func main() {
 			w.Write([]byte("You're no bird.... Go back to the beginning.\n"))
 		} else if c.Value == "Greenfinch" {
 			w.Write([]byte("Hey, Greenfinch! Great to see you! \n\nIt's always great to see a Greenfinch around here. \n\nI'll let you into a little secret, there's more to this bird shirt challenge than meets the eye... \n\nThere's been somewhat of a cagey character behind the scenes, capitalising some very interesting alphabetical characters... \n\nAll I know is that there are three four letter words hidden in these pages, and something about a 'text record'"))
-		} else if c.Value == "GoldFinch" {
+		} else if c.Value == "Goldfinch" {
 			w.Write([]byte("Sorry, you're a Goldfinch. I don't let in Goldfinches. Greenfinches only I'm afraid"))
 		} else {
 			w.Write([]byte("What kind of trick are you trying to pull here? I applaud the effort of editing cookies, but you're going about it all wrong.\n"))
