@@ -3,8 +3,6 @@ package main
 import (
 	"net/http"
 	"time"
-
-	"google.golang.org/appengine"
 )
 
 func addCookie(w http.ResponseWriter, name string, value string) {
@@ -22,6 +20,10 @@ func main() {
 	http.HandleFunc("/static/dont_open.html", func(w http.ResponseWriter, r *http.Request) {
 		addCookie(w, "Reputation", "Nosey_Parker")
 		http.ServeFile(w, r, "static/dont_open.html")
+	})
+
+	http.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "web_res/bird_icon32.png")
 	})
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -69,7 +71,7 @@ func main() {
 		if err != nil {
 			w.Write([]byte("You're no bird.... Go back to the beginning.\n"))
 		} else if c.Value == "Greenfinch" {
-			w.Write([]byte("Hey, Greenfinch! Great to see you!\n\nIt's always great to see a Greenfinch around here.\n\nI'll let you into a little secret, there's more to this bird shirt challenge than meets the eye...\n\nThere's been somewhat of a cagey character behind the scenes, capitalising some very interesting alphabetical characters...\n\nAll I know is that there are three four letter words hidden in there, and something about a 'text record'"))
+			w.Write([]byte("Hey, Greenfinch! Great to see you! \n\nIt's always great to see a Greenfinch around here. \n\nI'll let you into a little secret, there's more to this bird shirt challenge than meets the eye... \n\nThere's been somewhat of a cagey character behind the scenes, capitalising some very interesting alphabetical characters... \n\nAll I know is that there are three four letter words hidden in these pages, and something about a 'text record'"))
 		} else if c.Value == "GoldFinch" {
 			w.Write([]byte("Sorry, you're a Goldfinch. I don't let in Goldfinches. Greenfinches only I'm afraid"))
 		} else {
@@ -86,10 +88,10 @@ func main() {
 	})
 
 	// fs := http.FileServer(http.Dir("static/"))
-	// http.Handle("/static/", http.StripPrefix("/static/", fs))
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-	//http.ListenAndServe(":8080", nil)
 
-	appengine.Main()
+	http.ListenAndServe(":8080", nil)
+
+	//appengine.Main()
 
 }
