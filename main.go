@@ -92,9 +92,7 @@ func main() {
 	// fs := http.FileServer(http.Dir("static/"))
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
+	//Uncomment either of the next two lines based on whether it is to be run locally or on GCP App Engine
 	//http.ListenAndServe(":8080", nil)
-
 	appengine.Main()
-
-	//steghide extract -sf bird.jpg
 }
